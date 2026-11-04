@@ -38,7 +38,7 @@ def test_signup_duplicate_student(client):
 def test_signup_unknown_activity(client):
     email = "newstudent@mergington.edu"
 
-    response = client.post(f"/activities/Unknown Activity/signup?email={email}")
+    response = client.post(f"/activities/{quote('Unknown Activity')}/signup?email={email}")
 
     assert response.status_code == 404
     assert response.json()["detail"] == "Activity not found"
